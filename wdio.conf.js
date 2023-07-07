@@ -1,5 +1,8 @@
 const path = require('path')
 
+import fs from 'node:fs/promises'
+import { generate } from 'multiple-cucumber-html-reporter'
+
 exports.config = {
     //
     // ====================
@@ -7,8 +10,8 @@ exports.config = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
-    path : '/wd/hub',
-    port : 4725,
+    path: '/wd/hub',
+    port: 4725,
     //
     // ==================
     // Specify Test Files
@@ -55,15 +58,15 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        platformName                : "Android",
-        "appium:automationName"     : 'UiAutomator2',
-        "appium:deviceName"         : 'M22 milik Dwiky',
-        "appium:platformVersion"    : '13.0',
-        "appium:app"                : path.join(process.cwd(),'./features/apk/Diet_meal.apk'),
-        "appium:appPackage"         : "com.fghilmany.dietmealapp",
-        "appium:appActivity"        : ".ui.main.MainActivity",
-        "appium:noReset"            : true,
-        "appium:forceAppLaunch"     : true,
+        platformName: "Android",
+        "appium:automationName": 'UiAutomator2',
+        "appium:deviceName": 'M22 milik Dwiky',
+        "appium:platformVersion": '13.0',
+        "appium:app": path.join(process.cwd(), './features/apk/Diet_meal.apk'),
+        "appium:appPackage": "com.fghilmany.dietmealapp",
+        "appium:appActivity": ".ui.main.MainActivity",
+        "appium:noReset": true,
+        "appium:forceAppLaunch": true,
     }],
     //
     // ===================
@@ -113,7 +116,7 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: ['appium'],
-    
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -134,7 +137,17 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: [
+        // Like this with the default options, see the options below
+        'cucumberjs-json',
+
+        // OR like this if you want to set the folder and the language
+        // ['cucumberjs-json', {
+        //     jsonFolder: '.tmp/new/',
+        //     language: 'en',
+        // },
+        // ],
+    ],
 
     //
     // If you are using Cucumber you need to specify the location of your step definitions.
@@ -162,7 +175,7 @@ exports.config = {
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false
     },
-    
+
     //
     // =====
     // Hooks
@@ -176,8 +189,9 @@ exports.config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+        return fs.rm('.tmp/', { recursive: true });
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -283,7 +297,7 @@ exports.config = {
      */
     // afterFeature: function (uri, feature) {
     // },
-    
+
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {string} commandName hook command name
@@ -318,8 +332,18 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function (exitCode, config, capabilities, results) {
+        // Generate the report when it all tests are done
+        generate({
+            // Required
+            // This part needs to be the same path where you store the JSON files
+            // default = '.tmp/json/'
+            jsonDir: '.tmp/json/',
+            reportPath: '.tmp/report/',
+            // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
+        });
+    },
+
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
