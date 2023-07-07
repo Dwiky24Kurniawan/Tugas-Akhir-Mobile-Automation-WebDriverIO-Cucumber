@@ -1,0 +1,5 @@
+[35m[Appium][39m Available drivers:
+[35m[Appium][39m   - uiautomator2@2.29.2 (automationName 'UiAutomator2')
+[35m[Appium][39m Available plugins:
+[35m[Appium][39m   - element-wait@2.0.3
+[35m[Appium][39m No plugins activated. Use the --use-plugins flag with names of plugins to activate
