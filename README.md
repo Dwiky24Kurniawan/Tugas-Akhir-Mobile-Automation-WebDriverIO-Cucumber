@@ -21,4 +21,4 @@ How to run
   npm run wdio
 ```
 
-Link test case and recorded running program : https://drive.google.com/drive/u/0/folders/152TnbmUVqxu2wKXRLeVfIK0hDJ-TMIzl
+Link test case and recorded running program : https://drive.google.com/file/d/1qPQNypGLAz2ptOd8nja24Xqu2V-umJg9/view?usp=drivesdk
