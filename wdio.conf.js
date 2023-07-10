@@ -99,7 +99,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: '',
+    baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -139,7 +139,7 @@ exports.config = {
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: [
         // Like this with the default options, see the options below
-        'cucumberjs-json',
+        'cucumberjs-json', 'spec'
 
         // OR like this if you want to set the folder and the language
         // ['cucumberjs-json', {

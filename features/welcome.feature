@@ -1,6 +1,6 @@
 Feature: Test Suite - Diet Meal App
 
-  Scenario Outline: TC_001 - Negative - As a user, I can open Diet Meal app and go to home page with invalid data input
+  Scenario Outline: TC_001 - Negative - As a user, I want to Add User on Welcome Page with invalid data input
 
     Given I am on the welcome page
     When I input "<name>", "<weight>", "<height>" and choose gender
@@ -10,7 +10,7 @@ Feature: Test Suite - Diet Meal App
       | name | weight | height |
       |      | 60     | 175    |
 
-  Scenario Outline: TC_002 - Positive - As a user, I can open Diet Meal app and go to home page with valid data input
+  Scenario Outline: TC_002 - Positive - As a user, I want to Add User on Welcome Page with valid data input
 
     Given I am on the welcome page
     When I input "<name>", "<weight>", "<height>" and choose gender

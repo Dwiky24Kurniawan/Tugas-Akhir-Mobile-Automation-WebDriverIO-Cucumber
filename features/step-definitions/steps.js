@@ -20,20 +20,10 @@ When("I input {string}, {string}, {string} and choose gender", async (name, weig
     await WelcomePage.buttonNext.click()
 });
 
-// When(/^I click button NEXT$/, async () => {
-
-// });
-
-
-
 When("I choose activity", async () => {
     await WelcomePage.chooseActivity.click()
     await WelcomePage.buttonSelesai.click()
 });
-
-// When(/^I click button SELESAI$/, async () => {
-
-// });
 
 Then("I should see error message", async () => {
     await WelcomePage.errorMessageName.isDisplayed()
