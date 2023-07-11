@@ -17,8 +17,16 @@ How to run
 1. Connect to your device android or IOS
 2. Setup desired capabilities in file wdio.conf.js
 3. Run test
+
+First, open two terminals (or you can split terminal in vscode)
+In Terminal 1, type:
+```
+appium
+```
+Wait until Appium REST http interface listener started.
+After that, in Terminal 2, type:
 ```
   npm run wdio
 ```
 
-Link test case and recorded running program : https://drive.google.com/file/d/1qPQNypGLAz2ptOd8nja24Xqu2V-umJg9/view?usp=drivesdk
+Link test case and recorded running program : https://drive.google.com/file/d/1LkJGFTZ70JnCCHu-qXeXp7rjmiKS_bvX/view?usp=sharing
