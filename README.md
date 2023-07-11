@@ -18,7 +18,7 @@ How to run
 2. Setup desired capabilities in file wdio.conf.js
 3. Run test
 
-First, open two terminals (or you can split terminal in vscode)
+First, open two terminals (or you can split terminal in vscode).
 In Terminal 1, type:
 ```
 appium
