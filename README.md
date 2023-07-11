@@ -10,7 +10,7 @@ Install
 5. Install package.json with command
 
 ```
-  npm install
+npm install
 ```
 
 How to run
@@ -26,7 +26,7 @@ appium
 Wait until Appium REST http interface listener started.
 After that, in Terminal 2, type:
 ```
-  npm run wdio
+npm run wdio
 ```
 
 Link test case and recorded running program : https://drive.google.com/file/d/1LkJGFTZ70JnCCHu-qXeXp7rjmiKS_bvX/view?usp=sharing
